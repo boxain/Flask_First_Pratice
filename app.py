@@ -2,15 +2,15 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return 'Hellow'
+@app.route('/Flask')
+def flask():
+    return 'Hello Flask!'
 
-@app.route('/test')
+@app.route('/')
 def test():
-    return 'This is test'
+    return 'Hello MotherFuck!'
 
 if __name__=='__main__':
-    app.run()
+    app.run(debug=True)
 
 

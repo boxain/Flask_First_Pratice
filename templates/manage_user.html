@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Manage User{% endblock %}
+
+{% block extra_import %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" 
+type="text/javascript"></script>
+<script src="/static/admin.js"></script>
+{% endblock %}
+
+{% block content %}
+<form action="/manage_user" method="post">
+    {{ form.csrf_token }}
+    {{ form.start }}
+    {{ form.end }}
+    {{ form.user_id }}
+    {{ form.submit }}
+</form>
+<div>
+    {% for user in users %}
+    <div>
+        <span>{{ user['id'] }}</span>
+        <input type="text" value="{{ user['username'] }}">
+        <input type="email" value="{{ user['email'] }}">
+        <input type="checkbox" {% if user['is_admin'] %}checked{% endif %}> <!--這行偏難-->
+        <input type="text" value="{{ user['introduction'] }}">
+        <span>{{ user['register_time'] }}</span>
+        <button>Delete</button> <!--onclick="del_user({{user['id']}});"-->
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Post{% endblock %}
+
+{% block content %}
+{{ pagedown.include_pagedown() }} 
+<form action="{{ route }}" method="post">
+    {{ form.csrf_token }}
+    {{ form.title }}
+    {{ form.description }}
+    {{ form.content }}
+    {{ form.submit }}
+</form>
+{% endblock %}
+
+<!--他有一個 {{ pagedown.include_pagedown() }}，
+    這是用來引入外部 JS 來及時顯示 markdown 用的-->

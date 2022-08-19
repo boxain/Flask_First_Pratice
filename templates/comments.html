@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}comments{% endblock %}
+
+{% block content %}
+<div>
+    {% if comments %}
+        {% for comment in comments %}
+            {{ comment['author_id'] }}
+            <a href="/post/{{ comment['post_id'] }}">{{ comment['post_id' ]}}</a>
+            {{ comment['content'] }}
+        {% endfor %}
+    {% else %}
+        <p>No Comment</p>
+    {% endif %}
+</div>
+{% endblock %}

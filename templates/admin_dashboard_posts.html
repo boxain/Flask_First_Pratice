@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+
+{% block extra_import %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" 
+type="text/javascript"></script>
+<script src="/static/admin.js"></script>
+{% endblock %}
+
+
+{% block content %}
+<form action="/admin_dashboard/posts" method="post">
+    {{ form.csrf_token }}
+    {{ form.start }}
+    {{ form.end }}
+    {{ form.user_id }}
+    {{ form.submit }}
+</form>
+<div>
+    {% for post in posts %}
+    <div>
+        {{ post["author_id"] }}
+        <a href="/post/{{ post['id'] }}">{{ post["title"] }}</a>
+        {{ post["description"] }}
+        {{ post["time"] }}
+        <button>Delete</button> <!--onclick="del_post({{ post['id'] }});"-->
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

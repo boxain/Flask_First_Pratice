@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+<span><a href="/post/add">Add new post</a></span>
+<hr></hr>
+<div>
+    {% for post in posts %}
+    <div>
+        {{ post['author_id'] }}
+        <a href="/post/{{ post['id'] }}">{{ post['title'] }}</a>
+        {{ post['description'] }}
+        {{ post['time'] }}
+        <a href="/post/edit/{{ post['id'] }}">edit post</a>
+        <a href="/post/delete/{{ post['id'] }}">delete post</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

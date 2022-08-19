@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}comments{% endblock %}
+
+{% block extra_import %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" 
+type="text/javascript"></script>
+<script src="/static/admin.js"></script>
+{% endblock %}
+
+{% block content %}
+<form action="/admin_dashboard_comments" method="post">
+    {{ form.csrf_token }}
+    {{ form.start }}
+    {{ form.end }}
+    {{ form.user_id }}
+    {{ from.submit }}
+</form>
+<div>
+    {% for comment in comments %}
+        {{ comment["author_id"] }}
+        {{ comment["post_id" ]}}
+        {{ cooment["content"] }}
+        {{ comment["time"] }}
+        <button>Delete</button> <!--onclick="del_comment({{comment['id']}})"-->
+    {% endfor %}
+</div>
+{% endblock %}
